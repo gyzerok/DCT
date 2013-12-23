@@ -67,13 +67,13 @@ namespace DCT
                     switch (cmp)
                     {
                             case DCT.Component.Y:
-                                matrix[i, j] = pixel.Y;
+                                matrix[i, j] = pixel.Y - 128;
                                 break;
                             case DCT.Component.U:
-                                matrix[i, j] = pixel.U;
+                                matrix[i, j] = pixel.U - 128;
                                 break;
                             case DCT.Component.V:
-                                matrix[i, j] = pixel.V;
+                                matrix[i, j] = pixel.V - 128;
                                 break;
                     }
                 }
