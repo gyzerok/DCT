@@ -2,7 +2,7 @@
 
 namespace DCT
 {
-    class Quantizer
+    public class Quantizer
     {
         private int[,] qualityMatrix = new int[8,8];
         private int quality;
@@ -13,6 +13,9 @@ namespace DCT
             this.MakeQualityMatrix();
         }
 
+        /// <summary>
+        /// Quantity matrix forming. Using this.quality as a parameter
+        /// </summary>
         private void MakeQualityMatrix()
         {
             for (var i = 0; i < qualityMatrix.GetLength(1); i++)
@@ -24,6 +27,11 @@ namespace DCT
             }
         }
 
+        /// <summary>
+        /// Make matrix quantization. Matrix parameter refers to Pdct matrix
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <returns></returns>
         public int[,] MakeQuantization(int[,] matrix)
         {
             var resultMatrix = new int[8,8];
