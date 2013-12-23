@@ -9,6 +9,7 @@ namespace DCT
     class ZigzagScan<T>
     {
         private enum Direction { Right, LeftDown, Down, RightUp }
+        private enum InverseDirection { Left, RightUp, Up, LeftDown }
 
         /// <summary>
         /// Матрица зигзаг сканирования
@@ -27,6 +28,11 @@ namespace DCT
         public ZigzagScan(T[,] matrix)
         {
             elems = (T[,])(matrix.Clone());
+        }
+
+        public ZigzagScan(List<T> list)
+        {
+            GetFromList(list);
         }
 
         /// <summary>
@@ -108,6 +114,70 @@ namespace DCT
                 }
             }
             return result;
+        }
+
+        private void GetFromList(List<T> list)
+        {
+            elems = new T[8, 8];
+            int x, y;
+            InverseDirection direction;
+            x = y = 7;
+            direction = InverseDirection.Left;
+
+            elems[x, y] = list[list.Count-1];
+            list.RemoveAt(list.Count - 1);
+            while (!(x == 0 && y == 0))
+            {
+                switch (direction)
+                {
+                    case InverseDirection.Left:
+                        if (x > 0)
+                        {
+                            x--;
+                        }
+                        else
+                        {
+                            y--;
+                        }
+                        direction = InverseDirection.RightUp;
+                        elems[x, y] = list[list.Count-1];
+                        list.RemoveAt(list.Count - 1);
+                        break;
+                    case InverseDirection.Up:
+                        if (y > 0)
+                        {
+                            y--;
+                        }
+                        else
+                        {
+                            x--;
+                        }
+                        direction = InverseDirection.LeftDown;
+                        elems[x, y] = list[list.Count-1];
+                        list.RemoveAt(list.Count - 1);
+                        break;
+                    case InverseDirection.RightUp:
+                        while (x < 7 && y > 0)
+                        {
+                            x++;
+                            y--;
+                            elems[x, y] = list[list.Count - 1];
+                            list.RemoveAt(list.Count - 1);
+                        }
+                        direction = InverseDirection.Up;
+                        break;
+                    case InverseDirection.LeftDown:
+                        while (x > 0 && y < 7)
+                        {
+                            x--;
+                            y++;
+                            elems[x, y] = list[list.Count - 1];
+                            list.RemoveAt(list.Count - 1);
+                        }
+                        direction = InverseDirection.Left;
+                        break;
+                }
+            }
         }
     }
 }
