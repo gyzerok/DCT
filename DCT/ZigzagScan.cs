@@ -8,10 +8,17 @@ namespace DCT
 {
     class ZigzagScan<T>
     {
+        private enum Direction { Right, LeftDown, Down, RightUp }
+
         /// <summary>
         /// Матрица зигзаг сканирования
         /// </summary>
         private T[,] elems;        
+
+        public ZigzagScan()
+        {
+            elems = new T[8, 8];
+        }
 
         /// <summary>
         /// Создаёт клон матрицы
@@ -20,35 +27,6 @@ namespace DCT
         public ZigzagScan(T[,] matrix)
         {
             elems = (T[,])(matrix.Clone());
-        }
-
-        /// <summary>
-        /// Создаёт квадратную матрицу
-        /// </summary>
-        /// <param name="size">Размер матрицы</param>
-        public ZigzagScan(int size)
-        {
-            Initialize(size, size);
-        }
-
-        /// <summary>
-        /// Создаёт прямоугольную матрицу
-        /// </summary>
-        /// <param name="x">Ширина матрицы</param>
-        /// <param name="y">Высота матрицы</param>
-        public ZigzagScan(int x, int y)
-        {
-            Initialize(x, y);            
-        }
-
-        /// <summary>
-        /// Инициализирует матрицу
-        /// </summary>
-        /// <param name="x">Ширина</param>
-        /// <param name="y">Высота</param>
-        private void Initialize(int x, int y)
-        {
-            elems = new T[x, y];
         }
 
         /// <summary>
@@ -66,29 +44,7 @@ namespace DCT
             {
                 elems[x, y] = value;
             }
-        }
-
-        /// <summary>
-        /// Ширина матрицы
-        /// </summary>
-        public int Width
-        {
-            get
-            {
-                return elems.GetLength(0);
-            }
-        }
-
-        /// <summary>
-        /// Высота матрицы
-        /// </summary>
-        public int Height
-        {
-            get
-            {
-                return elems.GetLength(1);
-            }
-        }
+        }        
 
         /// <summary>
         /// Проводит зигзаг сканирование
@@ -96,10 +52,61 @@ namespace DCT
         /// <returns>Список квантованных элементов</returns>
         public List<T> Scan()
         {
-            List<T> result = new List<T>();
+            List<T> result = new List<T>();            
 
-
-
+            int x, y;
+            Direction direction;
+            x = y = 0;
+            direction = 0;
+            result.Add(elems[x, y]);
+            while ( ! (x == 7 && y == 7))
+            {
+                switch (direction)
+                {
+                    case Direction.Right:
+                        if (x < 7)
+                        {
+                            x++;
+                        }
+                        else
+                        {
+                            y++;
+                        }                        
+                        direction = Direction.LeftDown;
+                        result.Add(elems[x, y]);
+                        break;
+                    case Direction.Down:
+                        if (y < 7)
+                        {
+                            y++;
+                        }
+                        else
+                        {
+                            x++;
+                        }
+                        direction = Direction.RightUp;
+                        result.Add(elems[x, y]);
+                        break;
+                    case Direction.LeftDown:
+                        while (x > 0 && y < 7)
+                        {
+                            x--;
+                            y++;
+                            result.Add(elems[x, y]);
+                        }
+                        direction = Direction.Down;
+                        break;                                        
+                    case Direction.RightUp:
+                        while (x < 7 && y > 0)
+                        {
+                            x++;
+                            y--;
+                            result.Add(elems[x, y]);
+                        }
+                        direction = Direction.Right;
+                        break;
+                }
+            }
             return result;
         }
     }
