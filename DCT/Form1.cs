@@ -27,6 +27,8 @@ namespace DCT
                 var Y = this.Process(yuvBitmap.Component(Component.Y));
                 var U = this.Process(yuvBitmap.Component(Component.Y));
                 var V = this.Process(yuvBitmap.Component(Component.Y));
+
+                Writer.Write(20,Y);
             }
         }
 
@@ -34,14 +36,17 @@ namespace DCT
         {
             var res = new List<List<Tuple<int, int>>>();
 
+            var dct = Dct.Generate();
             for (int i = 0; i < matrix.Rows; i = i + 8)
-                for (int j = 0; j < matrix.Cols; j = j + 8)
+                for (int j = 0; j < matrix.Cols; j = j + 8)            
                 {
                     var subMtrx = this.GetSubmatrix(matrix, i, j);
 
+                    var pDct = dct*matrix*dct.Transpose;
+
                     var quant = new Quantizer(20);
 
-                    var quantMtrx = quant.MakeQuantization(subMtrx.Sasai());
+                    var quantMtrx = quant.MakeQuantization(pDct.Sasai());
 
                     var zsc = new ZigzagScan<int>(quantMtrx);
 
@@ -64,6 +69,11 @@ namespace DCT
                     ret[i - x, j - y] = matrix[i, j];
 
             return ret;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
