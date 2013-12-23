@@ -3,20 +3,20 @@ using System.Runtime.CompilerServices;
 
 namespace DCT
 {
-    public class Matrix<T>
+    public class Matrix
     {
-        private T[,] vals;
+        private int[,] vals;
         public int Width { get; private set; }
         public int Height { get; private set; }
 
         public Matrix(int width, int height)
         {
-            this.vals = new T[height, width];
+            this.vals = new int[height, width];
             this.Width = width;
             this.Height = height;
         }
 
-        public T this[int x, int y]
+        public int this[int x, int y]
         {
             get
             {
@@ -31,11 +31,11 @@ namespace DCT
         /// <summary>
         /// Получаем транспонированную матрицу
         /// </summary>
-        public Matrix<T> Transpose
+        public Matrix Transpose
         {
             get
             {
-                var matrix = new Matrix<T>(this.Width, this.Height);
+                var matrix = new Matrix(this.Width, this.Height);
 
                 for (int i = 0; i < this.Height; i++)
                     for (int j = 0; j < this.Width; j++)
@@ -45,9 +45,9 @@ namespace DCT
             }
         }
 
-        public static Matrix<T> operator *(Matrix<T> left, Matrix<T> right)
+        public static Matrix operator *(Matrix left, Matrix right)
         {
-            var matrix = new Matrix<T>(left.Width, right.Height);
+            var matrix = new Matrix(left.Width, right.Height);
 
             for (int i = 0; i < left.Height; i++)
             {
@@ -56,8 +56,9 @@ namespace DCT
                 {
                     for (int k = 0; k < left.Width; k++)
                         sum += left[i, k] * right[k, j];
+
+                    matrix[i, j] = sum;
                 }
-                matrix[i, j] = UmAlQuraCalendar;
             }
 
             return matrix;
