@@ -89,7 +89,18 @@ namespace DCT
                 return elems.GetLength(1);
             }
         }
-    
-        
+
+        /// <summary>
+        /// Проводит зигзаг сканирование
+        /// </summary>
+        /// <returns>Список квантованных элементов</returns>
+        public List<T> Scan()
+        {
+            List<T> result = new List<T>();
+
+
+
+            return result;
+        }
     }
 }
