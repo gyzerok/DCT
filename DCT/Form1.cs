@@ -23,11 +23,17 @@ namespace DCT
                 pictureBox1.Image = bmp;
 
                 var yuvBitmap = BitmapYUV.FromBitmap(bmp);
+
+                var Y = this.Process(yuvBitmap.Component(Component.Y));
+                var U = this.Process(yuvBitmap.Component(Component.Y));
+                var V = this.Process(yuvBitmap.Component(Component.Y));
             }
         }
 
         private List<List<Tuple<int, int>>> Process(Matrix matrix)
         {
+            var res = new List<List<Tuple<int, int>>>();
+
             for (int i = 0; i < matrix.Height; i = i + 8)
                 for (int j = 0; j < matrix.Width; j = j + 8)
                 {
@@ -39,8 +45,14 @@ namespace DCT
 
                     var zsc = new ZigzagScan<int>(quantMtrx);
 
-                    var wtf = zsc.S
+                    var wtf = zsc.Scan();
+
+                    var compressed = Compressor.MakeCompression(wtf);
+
+                    res.Add(compressed);
                 }
+
+            return res;
         }
 
         private Matrix GetSubmatrix(Matrix matrix, int x, int y)
