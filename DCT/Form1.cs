@@ -50,7 +50,7 @@ namespace DCT
                 {
                     var subMtrx = this.GetSubmatrix(matrix, i, j);
 
-                    var pDct = dct*matrix*dct.Transpose;
+                    var pDct = dct*subMtrx*dct.Transpose;
 
                     var quant = new Quantizer(20);
 

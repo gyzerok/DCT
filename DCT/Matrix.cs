@@ -51,13 +51,15 @@ namespace DCT
         public static Matrix operator *(Matrix left, Matrix right)
         {
             var matrix = new Matrix(left.Cols, right.Rows);
-
-            for (int i = 0; i < left.Rows; i++)
+            var m = left.Rows;
+            var n = left.Cols;
+            var q = right.Cols;
+            for (int i = 0; i < m; i++)
             {
                 var sum = 0;
-                for (int j = 0; j < right.Rows; j++)
+                for (int j = 0; j < q; j++)
                 {
-                    for (int k = 0; k < left.Cols; k++)
+                    for (int k = 0; k < n; k++)
                         sum += left[i, k] * right[k, j];
 
                     matrix[i, j] = sum;
