@@ -27,17 +27,9 @@ namespace DCT
             }
         }
 
-        public static Matrix operator *(Matrix left, Matrix right)
-        {
-            Matrix matrix = new Matrix(left.Width, right.Height);
-
-            for (int i = 0; i < left.Height; i++)
-                for (int j = 0; j < right.Width; j++)
-                    matrix[i, j] = 0;
-
-            return matrix;
-        }
-
+        /// <summary>
+        /// Получаем транспонированную матрицу
+        /// </summary>
         public Matrix Transpose
         {
             get
@@ -50,6 +42,18 @@ namespace DCT
 
                 return matrix;
             }
+        }
+
+        public static Matrix operator *(Matrix left, Matrix right)
+        {
+            Matrix matrix = new Matrix(left.Width, right.Height);
+
+            for (int i = 0; i < left.Height; i++)
+                for (int j = 0; j < right.Width; j++)
+                    for (int k = 0; k < left.Width; k++)
+                        matrix[i, j] = left[i, k] * right[k, j];
+
+            return matrix;
         }
     }
 }
