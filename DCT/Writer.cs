@@ -11,7 +11,7 @@ namespace DCT
         public static void Write(int quality, List<List<Tuple<int, int>>> matrices)
         {
             var binWriter = new BinaryWriter(File.Open(filePath, FileMode.Create));
-            binWriter.Write("q"+quality+"/q");
+            binWriter.Write("q" + quality + "/q");
             foreach (var matrix in matrices)
             {
                 foreach (var tuple in matrix)
