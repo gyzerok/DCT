@@ -1,21 +1,22 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace DCT
 {
-    public class Matrix
+    public class Matrix<T>
     {
-        private int[,] vals;
+        private T[,] vals;
         public int Width { get; private set; }
         public int Height { get; private set; }
 
         public Matrix(int width, int height)
         {
-            this.vals = new int[width, height];
+            this.vals = new T[height, width];
             this.Width = width;
             this.Height = height;
         }
 
-        public int this[int x, int y]
+        public T this[int x, int y]
         {
             get
             {
@@ -23,18 +24,18 @@ namespace DCT
             }
             set
             {
-                this[x, y] = value;
+                this.vals[x, y] = value;
             }
         }
 
         /// <summary>
         /// Получаем транспонированную матрицу
         /// </summary>
-        public Matrix Transpose
+        public Matrix<T> Transpose
         {
             get
             {
-                Matrix matrix = new Matrix(this.Width, this.Height);
+                var matrix = new Matrix<T>(this.Width, this.Height);
 
                 for (int i = 0; i < this.Height; i++)
                     for (int j = 0; j < this.Width; j++)
@@ -44,14 +45,20 @@ namespace DCT
             }
         }
 
-        public static Matrix operator *(Matrix left, Matrix right)
+        public static Matrix<T> operator *(Matrix<T> left, Matrix<T> right)
         {
-            Matrix matrix = new Matrix(left.Width, right.Height);
+            var matrix = new Matrix<T>(left.Width, right.Height);
 
             for (int i = 0; i < left.Height; i++)
+            {
+                var sum = 0;
                 for (int j = 0; j < right.Width; j++)
+                {
                     for (int k = 0; k < left.Width; k++)
-                        matrix[i, j] = left[i, k] * right[k, j];
+                        sum += left[i, k] * right[k, j];
+                }
+                matrix[i, j] = UmAlQuraCalendar;
+            }
 
             return matrix;
         }

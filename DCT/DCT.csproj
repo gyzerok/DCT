@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BitmapYUV.cs" />
     <Compile Include="ColorYUV.cs" />
+    <Compile Include="Dct.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
