@@ -34,8 +34,8 @@ namespace DCT
         {
             var res = new List<List<Tuple<int, int>>>();
 
-            for (int i = 0; i < matrix.Height; i = i + 8)
-                for (int j = 0; j < matrix.Width; j = j + 8)
+            for (int i = 0; i < matrix.Rows; i = i + 8)
+                for (int j = 0; j < matrix.Cols; j = j + 8)
                 {
                     var subMtrx = this.GetSubmatrix(matrix, i, j);
 
