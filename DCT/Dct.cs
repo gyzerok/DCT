@@ -8,8 +8,8 @@ namespace DCT
         {
             var matrix = new Matrix(8, 8);
 
-            for (int i = 0; i < matrix.Height; i++)
-                for (int j = 0; j < matrix.Width; j++)
+            for (int i = 0; i < matrix.Rows; i++)
+                for (int j = 0; j < matrix.Cols; j++)
                     if (i == 0)
                         matrix[i, j] = (int)(1 / Math.Sqrt(8));
                     else
