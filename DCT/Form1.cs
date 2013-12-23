@@ -14,7 +14,7 @@ namespace DCT
     {
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
     }
 }
