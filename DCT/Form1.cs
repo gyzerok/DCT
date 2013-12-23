@@ -27,6 +27,8 @@ namespace DCT
                 var Y = this.Process(yuvBitmap.Component(Component.Y));
                 var U = this.Process(yuvBitmap.Component(Component.Y));
                 var V = this.Process(yuvBitmap.Component(Component.Y));
+
+                Writer.Write(20,Y);
             }
         }
 
