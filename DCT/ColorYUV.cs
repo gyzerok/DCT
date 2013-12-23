@@ -4,15 +4,15 @@ namespace DCT
 {
     public class ColorYUV
     {
-        public double Y { get; set; }
-        public double U { get; set; }
-        public double V { get; set; }
+        public int Y { get; set; }
+        public int U { get; set; }
+        public int V { get; set; }
 
         public static ColorYUV FromColor(Color color)
         {
             ColorYUV yuvColor = new ColorYUV();
 
-            yuvColor.Y = 0.299 * color.R + 0.587 * color.G + 0.114 * color.B;
+            yuvColor.Y = (int)(0.299 * color.R + 0.587 * color.G + 0.114 * color.B);
             yuvColor.U = color.B - yuvColor.Y;
             yuvColor.V = color.R - yuvColor.Y;
 

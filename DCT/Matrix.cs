@@ -63,5 +63,10 @@ namespace DCT
 
             return matrix;
         }
+
+        public int[,] Sasai()
+        {
+            return this.vals;
+        }
     }
 }

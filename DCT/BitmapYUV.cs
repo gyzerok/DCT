@@ -2,6 +2,13 @@
 
 namespace DCT
 {
+    public enum Component
+    {
+        Y,
+        U,
+        V
+    }
+
     public class BitmapYUV
     {
         private ColorYUV[,] pixels;
@@ -46,6 +53,32 @@ namespace DCT
                     bitmap.SetPixel(i, j, this.GetPixel(i, j).ToColor());
 
             return bitmap;
+        }
+
+        public Matrix Component(Component cmp)
+        {
+            var matrix = new Matrix(this.Width, this.Height);
+
+            for (int i = 0; i < this.Height; i++)
+                for (int j = 0; j < this.Width; j++)
+                {
+                    var pixel = this.GetPixel(i, j);
+
+                    switch (cmp)
+                    {
+                            case DCT.Component.Y:
+                                matrix[i, j] = pixel.Y;
+                                break;
+                            case DCT.Component.U:
+                                matrix[i, j] = pixel.U;
+                                break;
+                            case DCT.Component.V:
+                                matrix[i, j] = pixel.V;
+                                break;
+                    }
+                }
+
+            return matrix;
         }
     }
 }
