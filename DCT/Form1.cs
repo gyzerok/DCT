@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DCT
@@ -28,7 +29,13 @@ namespace DCT
                 var U = this.Process(yuvBitmap.Component(Component.Y));
                 var V = this.Process(yuvBitmap.Component(Component.Y));
 
-                Writer.Write(20,Y);
+                var temp = new List<List<List<Tuple<int, int>>>>();
+
+                temp.Add(Y);
+                temp.Add(U);
+                temp.Add(V);
+
+                Writer.Write(20,temp);
             }
         }
 

@@ -55,7 +55,7 @@ namespace DCT
             {
                 for (var j = 0; j < matrix.GetLength(0); j++)
                 {
-                    var temp = (int)Math.Round((double)matrix[i, j] / (double)qualityMatrix[i, j]);
+                    var temp = (int)Math.Round((double)matrix[i, j] * (double)qualityMatrix[i, j]);
                     resultMatrix[i, j] = temp;
                 }
             }
