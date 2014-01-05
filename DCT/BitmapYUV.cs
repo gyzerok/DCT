@@ -92,7 +92,7 @@ namespace DCT
                     int u = uMatrix[i, j];
                     int v = vMatrix[i, j];
 
-                    ret.SetPixel(i, j, ColorYUV.FromComponents(y, u, v));   
+                    ret.SetPixel(i, j, ColorYUV.FromComponents(y + 128, u + 128, v + 128));   
                 }
 
             return ret;

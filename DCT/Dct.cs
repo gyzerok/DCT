@@ -74,6 +74,8 @@ namespace DCT
 
             for (int i = 0; i < submatrixList.Count; i++)
                 submatrixList[i] = this.dctMatrix * submatrixList[i] * this.dctMatrix.Transpose;
+
+            return Matrix.FromList(submatrixList);
         }
 
         public Matrix Generate()
@@ -83,9 +85,9 @@ namespace DCT
             for (int i = 0; i < matrix.Rows; i++)
                 for (int j = 0; j < matrix.Cols; j++)
                     if (i == 0)
-                        matrix[i, j] = (int)(1 / Math.Sqrt(8));
+                        matrix[i, j] = Math.Round(1 / Math.Sqrt(8);
                     else
-                        matrix[i, j] = (int)(1 / Math.Sqrt(8) * Math.Cos((2 * j + 1) * i * 3.14 / 2 / 8));
+                        matrix[i, j] = 1 / Math.Sqrt(8) * Math.Cos((2 * j + 1) * i * 3.14 / 2 / 8);
 
             return matrix;
         }
