@@ -8,6 +8,10 @@ namespace DCT
 {
     public partial class Form1 : Form
     {
+        private List<List<Tuple<int, int>>> y;
+        private List<List<Tuple<int, int>>> u;
+        private List<List<Tuple<int, int>>> v;
+
         public Form1()
         {
             InitializeComponent();            
@@ -25,6 +29,11 @@ namespace DCT
 
                 var yuvBitmap = BitmapYUV.FromBitmap(bmp);
 
+<<<<<<< HEAD
+                this.y = this.Process(yuvBitmap.Component(Component.Y));
+                this.u = this.Process(yuvBitmap.Component(Component.U));
+                this.v = this.Process(yuvBitmap.Component(Component.V));
+=======
                 var Y = this.Process(yuvBitmap.Component(Component.Y));
                 var U = this.Process(yuvBitmap.Component(Component.Y));
                 var V = this.Process(yuvBitmap.Component(Component.Y));
@@ -36,6 +45,7 @@ namespace DCT
                 temp.Add(V);
 
                 Writer.Write(20,temp);
+>>>>>>> a96d4229c2c7c25fdf3cc5dc1286e9c59ef0337c
             }
         }
 
