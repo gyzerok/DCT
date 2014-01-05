@@ -8,9 +8,7 @@ namespace DCT
 {
     public partial class Form1 : Form
     {
-        private List<List<Tuple<int, int>>> y;
-        private List<List<Tuple<int, int>>> u;
-        private List<List<Tuple<int, int>>> v;
+        private Bitmap bmp;
 
         public Form1()
         {
@@ -19,11 +17,24 @@ namespace DCT
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var dlg = new OpenFileDialog();
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                this.bmp = (Bitmap)Bitmap.FromFile(dlg.FileName);
+
+                this.pictureBox1.Image = this.bmp;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            var dct = new Dct(6);
 
+            var yuvBitmap = BitmapYUV.FromBitmap(this.bmp);
+            var newBmp = dct.Decompress(dct.Compress(yuvBitmap));
+
+            this.pictureBox2.Image = newBmp.ToBitmap();
         }
     }
 }
