@@ -18,7 +18,7 @@ namespace DCT
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {            
+        {
         }
 
         private List<List<Tuple<int, int>>> Process(Matrix matrix)
