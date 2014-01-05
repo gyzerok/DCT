@@ -6,7 +6,7 @@ namespace DCT
 {
     public class Dct
     {
-        private Matrix dctMatrix;
+        private RealMatrix dctMatrix;
         private Quantizer quantizer;
 
         public Dct(int quantity)
@@ -49,7 +49,7 @@ namespace DCT
 
             // Применяем ДКТ
             for (int i = 0; i < submatrixList.Count; i++)
-                submatrixList[i] = this.dctMatrix * submatrixList[i] * this.dctMatrix.Transpose;
+                submatrixList[i] = (Matrix)(this.dctMatrix * (RealMatrix)submatrixList[i] * this.dctMatrix.Transpose);
 
             // Квантуем все подматрицы
             for (int i = 0; i < submatrixList.Count; i++)
@@ -73,19 +73,19 @@ namespace DCT
                 submatrixList[i] = this.quantizer.Dequantize(submatrixList[i]);
 
             for (int i = 0; i < submatrixList.Count; i++)
-                submatrixList[i] = this.dctMatrix * submatrixList[i] * this.dctMatrix.Transpose;
+                submatrixList[i] = (Matrix)(this.dctMatrix * (RealMatrix)submatrixList[i] * this.dctMatrix.Transpose);
 
             return Matrix.FromList(submatrixList);
         }
 
-        public Matrix Generate()
+        public RealMatrix Generate()
         {
-            var matrix = new Matrix(8, 8);
+            var matrix = new RealMatrix(8, 8);
 
             for (int i = 0; i < matrix.Rows; i++)
                 for (int j = 0; j < matrix.Cols; j++)
                     if (i == 0)
-                        matrix[i, j] = Math.Round(1 / Math.Sqrt(8);
+                        matrix[i, j] = 1 / Math.Sqrt(8);
                     else
                         matrix[i, j] = 1 / Math.Sqrt(8) * Math.Cos((2 * j + 1) * i * 3.14 / 2 / 8);
 
