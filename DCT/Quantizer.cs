@@ -32,7 +32,7 @@ namespace DCT
         /// </summary>
         /// <param name="matrix"></param>
         /// <returns></returns>
-        public int[,] Quantize(int[,] matrix)
+        public Matrix Quantize(Matrix matrix)
         {
             var resultMatrix = new int[8,8];
 

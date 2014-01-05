@@ -1,75 +1,88 @@
 ﻿using System.Globalization;
 using System.Runtime.CompilerServices;
+using System;
 
 namespace DCT
 {
     public class Matrix
     {
         private int[,] vals;
-        public int Cols { get { return vals.GetLength(1); } }
-        public int Rows { get { return vals.GetLength(0); } }
+        
+        public int Rows { get; private set; }
+        public int Cols { get; private set; }
 
-        public Matrix(int cols, int rows)
-        {
-            this.vals = new int[rows, cols];
-        }
-
-        /// <summary>
-        /// element
-        /// </summary>
-        /// <param name="col">Столбец</param>
-        /// <param name="row">Строка</param>
         public int this[int row, int col]
         {
             get
             {
-                return this.vals[row, col];   
+                return vals[row, col];
             }
+
             set
             {
-                this.vals[row, col] = value;
+                vals[row, col] = value;
             }
         }
 
-        /// <summary>
-        /// Получаем транспонированную матрицу
-        /// </summary>
         public Matrix Transpose
         {
             get
             {
-                var matrix = new Matrix(this.Cols, this.Rows);
+                Matrix result = new Matrix(Cols, Rows);
 
-                for (int i = 0; i < this.Rows; i++)
-                    for (int j = 0; j < this.Cols; j++)
-                        matrix[j, i] = this[i, j];
-
-                return matrix;
-            }
-        }
-
-        public static Matrix operator *(Matrix left, Matrix right)
-        {
-            var matrix = new Matrix(left.Cols, right.Rows);
-
-            for (int i = 0; i < left.Rows; i++)
-            {
-                var sum = 0;
-                for (int j = 0; j < right.Rows; j++)
+                for (int i = 0; i < Rows; i++)
                 {
-                    for (int k = 0; k < left.Cols; k++)
-                        sum += left[i, k] * right[k, j];
+                    for (int j = 0; j < Cols; j++)
+                    {
+                        result[j, i] = vals[i, j];
+                    }
+                }
 
-                    matrix[i, j] = sum;
+                return result;
+            }
+        }               
+
+        public Matrix(int rows, int cols)
+        {
+            vals = new int[rows, cols];
+            this.Rows = rows;
+            this.Cols = cols;            
+        }                
+
+        public static Matrix operator *(Matrix A, Matrix B)  
+        {            
+            Matrix result = new Matrix(A.Rows, B.Cols);
+            
+            if (A.Cols != B.Rows)
+                throw new System.Exception("UCHI MATAN, S00QA!");
+
+            for (int i = 0; i < result.Rows; i++)
+            {
+                for (int j = 0; j < result.Cols; j++)
+                {
+                    int sum = 0;
+                    for (int k = 0; k < A.Cols; k++)
+                    {
+                        sum += A[i, k] * B[k, j];
+                    }
+                    result[i, j] = sum;
                 }
             }
 
-            return matrix;
+            return result;
         }
 
-        public int[,] Sasai()
+        public Matrix Submatrix(int row, int col, int sizeRows, int sizeCols)
         {
-            return this.vals;
+            Matrix result = new Matrix(sizeRows, sizeCols);
+            for (int i = 0; i < sizeRows; i++)
+            {
+                for (int j = 0; j < sizeCols; j++)
+                {
+                    result[i, j] = vals[row + i, col + j];
+                }
+            }
+            return result;
         }
     }
 }

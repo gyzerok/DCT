@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DCT
@@ -28,9 +29,23 @@ namespace DCT
 
                 var yuvBitmap = BitmapYUV.FromBitmap(bmp);
 
+<<<<<<< HEAD
                 this.y = this.Process(yuvBitmap.Component(Component.Y));
                 this.u = this.Process(yuvBitmap.Component(Component.U));
                 this.v = this.Process(yuvBitmap.Component(Component.V));
+=======
+                var Y = this.Process(yuvBitmap.Component(Component.Y));
+                var U = this.Process(yuvBitmap.Component(Component.Y));
+                var V = this.Process(yuvBitmap.Component(Component.Y));
+
+                var temp = new List<List<List<Tuple<int, int>>>>();
+
+                temp.Add(Y);
+                temp.Add(U);
+                temp.Add(V);
+
+                Writer.Write(20,temp);
+>>>>>>> a96d4229c2c7c25fdf3cc5dc1286e9c59ef0337c
             }
         }
 
@@ -45,7 +60,7 @@ namespace DCT
                 {
                     var subMtrx = this.GetSubmatrix(matrix, i, j);
 
-                    var pDct = dct*matrix*dct.Transpose;
+                    var pDct = dct*subMtrx*dct.Transpose;
 
                     var quant = new Quantizer(20);
 
