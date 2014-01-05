@@ -86,13 +86,80 @@ namespace DCT
             return result;
         }
 
+        // 1 + 2, матрицы одинакового размера
+        private static Matrix CompileInRow(List<Matrix> submatrixList)
+        {
+            if (submatrixList.Count == 0)
+                throw new System.Exception("нужно больше матриц!");
+            int rows = submatrixList[0].Rows;
+            int cols = submatrixList[0].Cols;
+            for (int i = 0; i < submatrixList.Count; i++)
+            {
+                if (submatrixList[i].Cols != cols || submatrixList[i].Rows != rows)
+                    throw new Exception("разные размеры");
+            }
+
+            Matrix result = new Matrix(rows, cols * submatrixList.Count);
+            for (int i = 0; i < submatrixList.Count; i++)
+            {
+                for (int j = 0; j < rows; j++)
+                {
+                    for (int k = 0; k < cols; k++)
+                    {
+                        result[j, i * cols + k] = submatrixList[i][j, k];
+                    }
+                }
+            }
+            return result;
+        }
+
+        // 1
+        // +
+        // 2, матрицы одинакового размера
+        private static Matrix CompileInColumn(List<Matrix> submatrixList)
+        {
+            if (submatrixList.Count == 0)
+                throw new System.Exception("нужно больше матриц!");
+            int rows = submatrixList[0].Rows;
+            int cols = submatrixList[0].Cols;
+            for (int i = 0; i < submatrixList.Count; i++)
+            {
+                if (submatrixList[i].Cols != cols || submatrixList[i].Rows != rows)
+                    throw new Exception("разные размеры");
+            }
+
+            Matrix result = new Matrix(rows * submatrixList.Count, cols);
+            for (int i = 0; i < submatrixList.Count; i++)
+            {
+                for (int j = 0; j < rows; j++)
+                {
+                    for (int k = 0; k < cols; k++)
+                    {
+                        result[i * rows + j, k] = submatrixList[i][j, k];
+                    }
+                }
+            }
+            return result;
+        }
+
         public static Matrix FromList(List<Matrix> submatrixList)
         {
-            int size = (int) Math.Sqrt(submatrixList.Count) * 8;
-            var ret = new Matrix(size, size);
+            int size = (int)Math.Sqrt(submatrixList.Count);
+            if (size * size != submatrixList.Count)
+                throw new System.Exception("Неправильное кол-во матриц в списке");
 
-            int k = 0;
-            while (k % size != 0 && )
+            List<Matrix> matrices = new List<Matrix>();
+            List<Matrix> column = new List<Matrix>();
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    matrices.Add(submatrixList[i * size + j]);
+                }
+                column.Add(Matrix.CompileInRow(matrices));
+                matrices.Clear();
+            }
+            return Matrix.CompileInColumn(column);
         }
     }
 }
