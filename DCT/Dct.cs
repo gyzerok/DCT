@@ -15,6 +15,30 @@ namespace DCT
             this.quantizer = new Quantizer(quantity);
         }
 
+        public List<List<List<int>>> Compress(BitmapYUV bmp)
+        {
+            var ret = new List<List<List<int>>>();
+
+            var yMatrix = bmp.Component(Component.Y);
+            var uMatrix = bmp.Component(Component.U);
+            var vMatrix = bmp.Component(Component.V);
+
+            ret.Add(this.Compress(yMatrix));
+            ret.Add(this.Compress(uMatrix));
+            ret.Add(this.Compress(vMatrix));
+
+            return ret;
+        }
+
+        public BitmapYUV Decompress(List<List<List<int>>> compressedData)
+        {
+            var yMatrix = this.Decompress(compressedData[0]);
+            var uMatrix = this.Decompress(compressedData[1]);
+            var vMatrix = this.Decompress(compressedData[2]);
+
+            return BitmapYUV.FromComponents(yMatrix, uMatrix, vMatrix);
+        }
+
         public List<List<int>> Compress(Matrix matrix)
         {
             // Формируем подматрицы 8х8
@@ -39,7 +63,7 @@ namespace DCT
             return vectorsList;
         }
 
-        public void Decompress(List<List<int>> vectorsList)
+        public Matrix Decompress(List<List<int>> vectorsList)
         {
             var submatrixList = new List<Matrix>();
             for (int i = 0; i < vectorsList.Count; i++)

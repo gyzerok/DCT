@@ -80,5 +80,22 @@ namespace DCT
 
             return matrix;
         }
+
+        public static BitmapYUV FromComponents(Matrix yMatrix, Matrix uMatrix, Matrix vMatrix)
+        {
+            var ret = new BitmapYUV(yMatrix.Rows, yMatrix.Cols);
+
+            for (int i = 0; i < yMatrix.Rows; i++)
+                for (int j = 0; j < yMatrix.Cols; j++)
+                {
+                    int y = yMatrix[i, j];
+                    int u = uMatrix[i, j];
+                    int v = vMatrix[i, j];
+
+                    ret.SetPixel(i, j, ColorYUV.FromComponents(y, u, v));   
+                }
+
+            return ret;
+        }
     }
 }

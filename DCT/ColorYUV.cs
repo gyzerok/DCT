@@ -33,5 +33,16 @@ namespace DCT
 
             return Color.FromArgb(R, G, B);
         }
+
+        public static ColorYUV FromComponents(int y, int u, int v)
+        {
+            var ret = new ColorYUV();
+
+            ret.Y = y;
+            ret.U = u;
+            ret.V = v;
+
+            return ret;
+        }
     }
 }
