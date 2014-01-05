@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System;
 
@@ -83,6 +84,15 @@ namespace DCT
                 }
             }
             return result;
+        }
+
+        public static Matrix FromList(List<Matrix> submatrixList)
+        {
+            int size = (int) Math.Sqrt(submatrixList.Count) * 8;
+            var ret = new Matrix(size, size);
+
+            int k = 0;
+            while (k % size != 0 && )
         }
     }
 }
