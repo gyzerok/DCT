@@ -18,35 +18,7 @@ namespace DCT
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            Bitmap bmp;
-            var dlg = new OpenFileDialog();
-
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                bmp = (Bitmap)Bitmap.FromFile(dlg.FileName);
-                pictureBox1.Image = bmp;
-
-                var yuvBitmap = BitmapYUV.FromBitmap(bmp);
-
-<<<<<<< HEAD
-                this.y = this.Process(yuvBitmap.Component(Component.Y));
-                this.u = this.Process(yuvBitmap.Component(Component.U));
-                this.v = this.Process(yuvBitmap.Component(Component.V));
-=======
-                var Y = this.Process(yuvBitmap.Component(Component.Y));
-                var U = this.Process(yuvBitmap.Component(Component.Y));
-                var V = this.Process(yuvBitmap.Component(Component.Y));
-
-                var temp = new List<List<List<Tuple<int, int>>>>();
-
-                temp.Add(Y);
-                temp.Add(U);
-                temp.Add(V);
-
-                Writer.Write(20,temp);
->>>>>>> a96d4229c2c7c25fdf3cc5dc1286e9c59ef0337c
-            }
+        {            
         }
 
         private List<List<Tuple<int, int>>> Process(Matrix matrix)
