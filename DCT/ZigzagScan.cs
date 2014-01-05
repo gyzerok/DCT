@@ -17,7 +17,7 @@ namespace DCT
             int col, row;
             col = row = 0;
             Direction direction = Direction.Up;            
-            while (col < 7 && row < 7)
+            while (col <= 7 && row <= 7)
             {
                 result.Add(quantizedMatrix[row, col]);
                 switch (direction)
@@ -75,9 +75,9 @@ namespace DCT
             int col, row, index;
             col = row = index = 0;
             Direction direction = Direction.Up;
-            while (col < 7 && row < 7)
+            while (col <= 7 && row <= 7)
             {
-                result[col, row] = vector[index++];
+                result[row, col] = vector[index++];
                 switch (direction)
                 {
                     case Direction.Up:
