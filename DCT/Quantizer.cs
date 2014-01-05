@@ -32,7 +32,7 @@ namespace DCT
         /// </summary>
         /// <param name="matrix"></param>
         /// <returns></returns>
-        public int[,] MakeQuantization(int[,] matrix)
+        public int[,] Quantize(int[,] matrix)
         {
             var resultMatrix = new int[8,8];
 
@@ -47,7 +47,7 @@ namespace DCT
             return this.qualityMatrix;
         }
 
-        public int[,] MakeDequantization(int[,] matrix)
+        public int[,] Dequantize(int[,] matrix)
         {
             var resultMatrix = new int[8, 8];
 

@@ -4,6 +4,16 @@ namespace DCT
 {
     public class Dct
     {
+        public static void Compress()
+        {
+            
+        }
+
+        public static void Decompress()
+        {
+            
+        }
+
         public static Matrix Generate()
         {
             var matrix = new Matrix(8, 8);
