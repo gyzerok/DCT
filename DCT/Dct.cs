@@ -1,20 +1,48 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Security.Principal;
 
 namespace DCT
 {
     public class Dct
     {
-        public static void Compress()
+        private Matrix dctMatrix;
+        private Quantizer quantizer;
+
+        public Dct(int quantity)
+        {
+            this.dctMatrix = this.Generate();
+            this.quantizer = new Quantizer(quantity);
+        }
+
+        public List<List<int>> Compress(Matrix p)
+        {
+            var pDct = this.dctMatrix * p * this.dctMatrix.Transpose;
+
+            // Формируем подматрицы 8х8
+            var submatrixList = new List<Matrix>();
+            for (int i = 0; i < p.Rows; i = i + 8)
+                for(int j = 0; j < p.Cols; j = j + 8)
+                    submatrixList.Add(p.Submatrix(i, j, 8, 8));
+
+            // Квантуем все подматрицы
+            for (int i = 0; i < submatrixList.Count; i++)
+                submatrixList[i] = this.quantizer.Quantize(submatrixList[i]);
+
+            // Проходим зигзаг-сканированием по матрицам
+            var vectorsList = new List<List<int>>();
+            for (int i = 0; i < submatrixList.Count; i++)
+                vectorsList.Add(ZigzagScan.Scan(submatrixList[i]));
+
+            return vectorsList;
+        }
+
+        public void Decompress(List<List<int>> vectorsList)
         {
             
         }
 
-        public static void Decompress()
-        {
-            
-        }
-
-        public static Matrix Generate()
+        public Matrix Generate()
         {
             var matrix = new Matrix(8, 8);
 
