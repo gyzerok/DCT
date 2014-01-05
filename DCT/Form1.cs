@@ -54,15 +54,15 @@ namespace DCT
 
                     var quant = new Quantizer(20);
 
-                    var quantMtrx = quant.MakeQuantization(pDct.Sasai());
+                    //var quantMtrx = quant.MakeQuantization(pDct.Sasai());
 
-                    var zsc = new ZigzagScan<int>(quantMtrx);
+                    //var zsc = new ZigzagScan<int>(quantMtrx);
 
-                    var wtf = zsc.Scan();
+                    //var wtf = zsc.Scan();
 
-                    var compressed = Compressor.MakeCompression(wtf);
+                    //var compressed = Compressor.MakeCompression(wtf);
 
-                    res.Add(compressed);
+                    //res.Add(compressed);
                 }
 
             return res;
