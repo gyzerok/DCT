@@ -33,7 +33,7 @@ namespace Labs
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var dct = new Dct(6);
+            var dct = new Dct(1);
 
             var yuvBitmap = BitmapYUV.FromBitmap(this.bmp);
             var newBmp = dct.Decompress(dct.Compress(yuvBitmap));

@@ -66,12 +66,16 @@ namespace DCT
         public Matrix Decompress(List<List<int>> vectorsList)
         {
             var submatrixList = new List<Matrix>();
+
+            // Производим обратное сканирование
             for (int i = 0; i < vectorsList.Count; i++)
                 submatrixList.Add(ZigzagScan.ReverseScan(vectorsList[i]));
 
+            // Деквантование
             for (int i = 0; i < submatrixList.Count; i++)
                 submatrixList[i] = this.quantizer.Dequantize(submatrixList[i]);
 
+            // Обратное ДКП
             for (int i = 0; i < submatrixList.Count; i++)
                 submatrixList[i] = (Matrix)(this.dctMatrix * (RealMatrix)submatrixList[i] * this.dctMatrix.Transpose);
 
