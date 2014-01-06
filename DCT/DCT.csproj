@@ -44,26 +44,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compressor.cs" />
-    <Compile Include="BitmapYUV.cs" />
-    <Compile Include="ColorYUV.cs" />
-    <Compile Include="Dct.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Old\Compressor.cs" />
+    <Compile Include="YUV\BitmapYUV.cs" />
+    <Compile Include="YUV\ColorYUV.cs" />
+    <Compile Include="DCT\Dct.cs" />
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Matrix.cs" />
+    <Compile Include="DCT\Matrix.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quantizer.cs" />
-    <Compile Include="Reader.cs" />
-    <Compile Include="RealMatrix.cs" />
-    <Compile Include="Writer.cs" />
-    <Compile Include="ZigzagScan.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="DCT\Quantizer.cs" />
+    <Compile Include="Old\Reader.cs" />
+    <Compile Include="DCT\RealMatrix.cs" />
+    <Compile Include="Old\Writer.cs" />
+    <Compile Include="DCT\ZigzagScan.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
