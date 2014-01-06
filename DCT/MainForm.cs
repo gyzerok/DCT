@@ -15,6 +15,7 @@ namespace Labs
         public MainForm()
         {
             InitializeComponent();
+            label5.Text = trackBar1.Value.ToString();
         }
 
         #region DCT
@@ -33,7 +34,7 @@ namespace Labs
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var dct = new Dct(1);
+            var dct = new Dct(trackBar1.Value);
 
             var yuvBitmap = BitmapYUV.FromBitmap(this.bmp);
             var newBmp = dct.Decompress(dct.Compress(yuvBitmap));
@@ -84,6 +85,11 @@ namespace Labs
             }
         }
 
-        #endregion
+        #endregion        
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            label5.Text = trackBar1.Value.ToString();
+        }
     }
 }
