@@ -77,7 +77,7 @@ namespace DCT
 
             // Обратное ДКП
             for (int i = 0; i < submatrixList.Count; i++)
-                submatrixList[i] = (Matrix)(this.dctMatrix * (RealMatrix)submatrixList[i] * this.dctMatrix.Transpose);
+                submatrixList[i] = (Matrix)(this.dctMatrix.Transpose * (RealMatrix)submatrixList[i] * this.dctMatrix);
 
             return Matrix.FromList(submatrixList);
         }
