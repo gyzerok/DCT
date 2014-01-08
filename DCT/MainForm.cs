@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 
 using DCT;
+using Recognizer;
 
 namespace Labs
 {
@@ -40,6 +41,23 @@ namespace Labs
             var newBmp = dct.Decompress(dct.Compress(yuvBitmap));
 
             this.pictureBox2.Image = newBmp.ToBitmap();
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            label5.Text = trackBar1.Value.ToString();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            // сохранение
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            // загрузить
+
         }
 
         #endregion
@@ -85,11 +103,57 @@ namespace Labs
             }
         }
 
-        #endregion        
+        #endregion                
+                
+        #region Recognizer
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            label5.Text = trackBar1.Value.ToString();
+            OpenFileDialog od = new OpenFileDialog();
+            if (od.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                bmp = (Bitmap)Bitmap.FromFile(od.FileName);
+                pictureBox7.Image = bmp;
+            }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (bmp != null)
+            {
+                Bitmap result = new Bitmap(bmp.Width, bmp.Height);
+                Recognizer.Recognizer rec = new Recognizer.Recognizer(bmp);
+                rec.AccuracyRange = 4;
+                rec.OrthogonalAccuracy = 4;
+                rec.Recognize();
+                label8.Text = rec.Unknown.Count.ToString();
+                label11.Text = rec.Circles.Count.ToString();
+                label14.Text = rec.Rectangles.Count.ToString();
+                foreach (Figure fig in rec.Circles)
+                {
+                    foreach (ColorPoint point in fig.Points)
+                    {
+                        result.SetPixel(point.X, point.Y, Color.Red);
+                    }
+                }
+                foreach (Figure fig in rec.Rectangles)
+                {
+                    foreach (ColorPoint point in fig.Points)
+                    {
+                        result.SetPixel(point.X, point.Y, Color.Green);
+                    }
+                }
+                foreach (Figure fig in rec.Unknown)
+                {
+                    foreach (ColorPoint point in fig.Points)
+                    {
+                        result.SetPixel(point.X, point.Y, Color.Blue);
+                    }
+                }
+                pictureBox8.Image = result;
+            }
+        }  
+
+        #endregion        
     }
 }

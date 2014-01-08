@@ -45,6 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Old\Compressor.cs" />
+    <Compile Include="Recognizer\CircleRecognizer.cs" />
+    <Compile Include="Recognizer\ColorPoint.cs" />
+    <Compile Include="Recognizer\Common.cs" />
+    <Compile Include="Recognizer\Figure.cs" />
+    <Compile Include="Recognizer\Line.cs" />
+    <Compile Include="Recognizer\Recognizer.cs" />
+    <Compile Include="Recognizer\RectangleRecognizer.cs" />
     <Compile Include="YUV\BitmapYUV.cs" />
     <Compile Include="YUV\ColorYUV.cs" />
     <Compile Include="DCT\Dct.cs" />
