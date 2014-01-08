@@ -17,7 +17,7 @@ namespace DCT
             Serialize(data, sw);
             sw.Close();
             HuffmanProgram.Execute("-e", "auxfilename", fileName);
-            //File.Delete("auxfilename");
+            File.Delete("auxfilename");
         }
 
         public static List<List<List<int>>> Read(string fileName)
@@ -27,7 +27,7 @@ namespace DCT
             StreamReader sr = new StreamReader(fileName);
             List<List<List<int>>> result = Deserialize(sr);
             sr.Close();
-            //File.Delete(fileName);
+            File.Delete(fileName);
             return result;
         }
 
