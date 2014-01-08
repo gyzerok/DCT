@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DCT\ImgIO.cs" />
+    <Compile Include="Huffman\CodingCommon.cs" />
+    <Compile Include="Huffman\HuffmanDecoding.cs" />
+    <Compile Include="Huffman\HuffmanEncoding.cs" />
+    <Compile Include="Huffman\Node.cs" />
+    <Compile Include="Huffman\HuffmanProgram.cs" />
     <Compile Include="Old\Compressor.cs" />
     <Compile Include="Recognizer\CircleRecognizer.cs" />
     <Compile Include="Recognizer\ColorPoint.cs" />

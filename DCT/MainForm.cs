@@ -12,6 +12,7 @@ namespace Labs
     public partial class MainForm : Form
     {
         private Bitmap bmp;
+        private string fileName;
 
         public MainForm()
         {
@@ -28,7 +29,7 @@ namespace Labs
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 this.bmp = (Bitmap)Bitmap.FromFile(dlg.FileName);
-
+                fileName = dlg.FileName;
                 this.pictureBox1.Image = this.bmp;
             }
         }
@@ -50,14 +51,28 @@ namespace Labs
 
         private void button6_Click(object sender, EventArgs e)
         {
-            // сохранение
-
+            SaveFileDialog sd = new SaveFileDialog();
+            sd.Filter = "Encoded images (*.hci)|*.hci";
+            if (sd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                hca.HuffmanProgram.Source = this.fileName;
+                var dct = new Dct(trackBar1.Value);
+                var yuvBitmap = BitmapYUV.FromBitmap(this.bmp);                
+                ImgIO.Write(sd.FileName, dct.Compress(yuvBitmap));                    
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            // загрузить
-
+            SaveFileDialog sd = new SaveFileDialog();
+            if (sd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                hca.HuffmanProgram.Source = this.fileName;
+                var dct = new Dct(trackBar1.Value);
+                var yuvBitmap = BitmapYUV.FromBitmap(this.bmp);
+                var newBmp = dct.Decompress(ImgIO.Read(sd.FileName));
+                this.pictureBox2.Image = newBmp.ToBitmap();
+            }
         }
 
         #endregion
