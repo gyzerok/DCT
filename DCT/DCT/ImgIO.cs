@@ -8,6 +8,6 @@ namespace DCT.DCT
 {
     class ImgIO
     {
-        public static void Write(string fileName, 
+        //public static void Write(string fileName,
     }
 }
