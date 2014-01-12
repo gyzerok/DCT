@@ -63,9 +63,15 @@
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.RedPB = new System.Windows.Forms.PictureBox();
+            this.GreenPB = new System.Windows.Forms.PictureBox();
+            this.BluePB = new System.Windows.Forms.PictureBox();
+            this.HistoBtn = new System.Windows.Forms.Button();
+            this.pictureBox228 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -78,6 +84,10 @@
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RedPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GreenPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BluePB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox228)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -129,23 +139,28 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(923, 500);
+            this.tabControl1.Size = new System.Drawing.Size(949, 504);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage4
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(915, 474);
+            this.tabPage4.Size = new System.Drawing.Size(941, 478);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Фильтры";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.pictureBox228);
+            this.tabPage3.Controls.Add(this.HistoBtn);
+            this.tabPage3.Controls.Add(this.BluePB);
+            this.tabPage3.Controls.Add(this.GreenPB);
+            this.tabPage3.Controls.Add(this.RedPB);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(915, 474);
+            this.tabPage3.Size = new System.Drawing.Size(941, 478);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Гистограмма";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -164,7 +179,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(915, 474);
+            this.tabPage2.Size = new System.Drawing.Size(941, 478);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "YUV";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -260,7 +275,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(915, 474);
+            this.tabPage1.Size = new System.Drawing.Size(941, 478);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ДКП";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -296,7 +311,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(425, 468);
+            this.panel2.Size = new System.Drawing.Size(425, 472);
             this.panel2.TabIndex = 5;
             // 
             // panel1
@@ -307,9 +322,9 @@
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(487, 3);
+            this.panel1.Location = new System.Drawing.Point(513, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(425, 468);
+            this.panel1.Size = new System.Drawing.Size(425, 472);
             this.panel1.TabIndex = 4;
             // 
             // button7
@@ -346,7 +361,7 @@
             this.tabPage5.Controls.Add(this.pictureBox7);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(915, 474);
+            this.tabPage5.Size = new System.Drawing.Size(941, 478);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Распознавание";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -441,17 +456,60 @@
             this.pictureBox7.TabIndex = 0;
             this.pictureBox7.TabStop = false;
             // 
+            // RedPB
+            // 
+            this.RedPB.Location = new System.Drawing.Point(422, 9);
+            this.RedPB.Name = "RedPB";
+            this.RedPB.Size = new System.Drawing.Size(512, 100);
+            this.RedPB.TabIndex = 0;
+            this.RedPB.TabStop = false;
+            // 
+            // GreenPB
+            // 
+            this.GreenPB.Location = new System.Drawing.Point(421, 152);
+            this.GreenPB.Name = "GreenPB";
+            this.GreenPB.Size = new System.Drawing.Size(512, 100);
+            this.GreenPB.TabIndex = 1;
+            this.GreenPB.TabStop = false;
+            // 
+            // BluePB
+            // 
+            this.BluePB.Location = new System.Drawing.Point(421, 306);
+            this.BluePB.Name = "BluePB";
+            this.BluePB.Size = new System.Drawing.Size(512, 100);
+            this.BluePB.TabIndex = 2;
+            this.BluePB.TabStop = false;
+            // 
+            // HistoBtn
+            // 
+            this.HistoBtn.Location = new System.Drawing.Point(9, 413);
+            this.HistoBtn.Name = "HistoBtn";
+            this.HistoBtn.Size = new System.Drawing.Size(924, 57);
+            this.HistoBtn.TabIndex = 3;
+            this.HistoBtn.Text = "Открыть";
+            this.HistoBtn.UseVisualStyleBackColor = true;
+            this.HistoBtn.Click += new System.EventHandler(this.HistoBtn_Click);
+            // 
+            // pictureBox228
+            // 
+            this.pictureBox228.Location = new System.Drawing.Point(9, 7);
+            this.pictureBox228.Name = "pictureBox228";
+            this.pictureBox228.Size = new System.Drawing.Size(400, 400);
+            this.pictureBox228.TabIndex = 4;
+            this.pictureBox228.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 500);
+            this.ClientSize = new System.Drawing.Size(949, 504);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -467,6 +525,10 @@
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RedPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GreenPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BluePB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox228)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -508,6 +570,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.PictureBox RedPB;
+        private System.Windows.Forms.PictureBox GreenPB;
+        private System.Windows.Forms.PictureBox BluePB;
+        private System.Windows.Forms.Button HistoBtn;
+        private System.Windows.Forms.PictureBox pictureBox228;
     }
 }
 

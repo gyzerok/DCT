@@ -20,6 +20,31 @@ namespace Labs
             label5.Text = trackBar1.Value.ToString();
         }
 
+        #region Histogram 
+
+        private void HistoBtn_Click(object sender, EventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                this.bmp = (Bitmap)Bitmap.FromFile(dlg.FileName);
+                fileName = dlg.FileName;
+            }
+
+            this.pictureBox228.Image = this.bmp;
+
+            RedPB.CreateGraphics().Clear(Color.White);
+            GreenPB.CreateGraphics().Clear(Color.White);
+            BluePB.CreateGraphics().Clear(Color.White);
+
+            Histogram histo = new Histogram(this.bmp);
+            histo.Draw(this.RedPB, this.GreenPB, this.BluePB);
+            
+        }
+
+        #endregion
+
         #region DCT
 
         private void button1_Click(object sender, EventArgs e)
@@ -170,5 +195,7 @@ namespace Labs
         }  
 
         #endregion        
+
+        
     }
 }
