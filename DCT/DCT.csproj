@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Filter.cs" />
+    <Compile Include="Common\Gisto.cs" />
     <Compile Include="DCT\ImgIO.cs" />
     <Compile Include="Huffman\CodingCommon.cs" />
     <Compile Include="Huffman\HuffmanDecoding.cs" />
