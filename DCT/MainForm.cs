@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 using DCT;
 using Recognizer;
+using Common;
 
 namespace Labs
 {
@@ -170,5 +171,61 @@ namespace Labs
         }  
 
         #endregion        
+
+        #region Filter
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                this.bmp = (Bitmap)Bitmap.FromFile(dlg.FileName);
+                fileName = dlg.FileName;
+                this.pictureBox9.Image = this.bmp;
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (this.bmp != null)
+            {
+                var filter = new Filter(this.bmp);
+
+                this.pictureBox10.Image = filter.Grayscale;
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (this.bmp != null)
+            {
+                var filter = new Filter(this.bmp);
+
+                this.pictureBox10.Image = filter.Mirror;
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (this.bmp != null)
+            {
+                var filter = new Filter(this.bmp);
+
+                this.pictureBox10.Image = filter.Negative;
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (this.bmp != null)
+            {
+                var filter = new Filter(this.bmp);
+
+                this.pictureBox10.Image = filter.Contoured;
+            }
+        }
+
+        #endregion
     }
 }
