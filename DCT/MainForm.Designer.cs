@@ -34,7 +34,19 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.pictureBox228 = new System.Windows.Forms.PictureBox();
+            this.HistoBtn = new System.Windows.Forms.Button();
+            this.BluePB = new System.Windows.Forms.PictureBox();
+            this.GreenPB = new System.Windows.Forms.PictureBox();
+            this.RedPB = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,29 +75,17 @@
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-
-            this.RedPB = new System.Windows.Forms.PictureBox();
-            this.GreenPB = new System.Windows.Forms.PictureBox();
-            this.BluePB = new System.Windows.Forms.PictureBox();
-            this.HistoBtn = new System.Windows.Forms.Button();
-            this.pictureBox228 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.tabControl1.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
-
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox228)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BluePB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GreenPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RedPB)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -98,15 +98,6 @@
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-
-            ((System.ComponentModel.ISupportInitialize)(this.RedPB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GreenPB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BluePB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox228)).BeginInit();
-
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -177,6 +168,73 @@
             this.tabPage4.Text = "Фильтры";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(414, 204);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(87, 45);
+            this.button12.TabIndex = 6;
+            this.button12.Text = "Contoured";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(414, 153);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(87, 45);
+            this.button11.TabIndex = 5;
+            this.button11.Text = "Negative";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(8, 409);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(899, 57);
+            this.button10.TabIndex = 4;
+            this.button10.Text = "Открыть";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(414, 102);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(87, 45);
+            this.button9.TabIndex = 3;
+            this.button9.Text = "Mirror";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(414, 51);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(87, 45);
+            this.button8.TabIndex = 2;
+            this.button8.Text = "Grayscale";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Location = new System.Drawing.Point(507, 3);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(400, 400);
+            this.pictureBox10.TabIndex = 1;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.White;
+            this.pictureBox9.Location = new System.Drawing.Point(8, 3);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(400, 400);
+            this.pictureBox9.TabIndex = 0;
+            this.pictureBox9.TabStop = false;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.pictureBox228);
@@ -190,6 +248,48 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Гистограмма";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox228
+            // 
+            this.pictureBox228.Location = new System.Drawing.Point(9, 7);
+            this.pictureBox228.Name = "pictureBox228";
+            this.pictureBox228.Size = new System.Drawing.Size(400, 400);
+            this.pictureBox228.TabIndex = 4;
+            this.pictureBox228.TabStop = false;
+            // 
+            // HistoBtn
+            // 
+            this.HistoBtn.Location = new System.Drawing.Point(9, 413);
+            this.HistoBtn.Name = "HistoBtn";
+            this.HistoBtn.Size = new System.Drawing.Size(924, 57);
+            this.HistoBtn.TabIndex = 3;
+            this.HistoBtn.Text = "Открыть";
+            this.HistoBtn.UseVisualStyleBackColor = true;
+            this.HistoBtn.Click += new System.EventHandler(this.HistoBtn_Click);
+            // 
+            // BluePB
+            // 
+            this.BluePB.Location = new System.Drawing.Point(421, 276);
+            this.BluePB.Name = "BluePB";
+            this.BluePB.Size = new System.Drawing.Size(512, 130);
+            this.BluePB.TabIndex = 2;
+            this.BluePB.TabStop = false;
+            // 
+            // GreenPB
+            // 
+            this.GreenPB.Location = new System.Drawing.Point(421, 141);
+            this.GreenPB.Name = "GreenPB";
+            this.GreenPB.Size = new System.Drawing.Size(512, 130);
+            this.GreenPB.TabIndex = 1;
+            this.GreenPB.TabStop = false;
+            // 
+            // RedPB
+            // 
+            this.RedPB.Location = new System.Drawing.Point(422, 7);
+            this.RedPB.Name = "RedPB";
+            this.RedPB.Size = new System.Drawing.Size(512, 130);
+            this.RedPB.TabIndex = 0;
+            this.RedPB.TabStop = false;
             // 
             // tabPage2
             // 
@@ -482,117 +582,6 @@
             this.pictureBox7.TabIndex = 0;
             this.pictureBox7.TabStop = false;
             // 
-
-            // RedPB
-            // 
-            this.RedPB.Location = new System.Drawing.Point(422, 9);
-            this.RedPB.Name = "RedPB";
-            this.RedPB.Size = new System.Drawing.Size(512, 100);
-            this.RedPB.TabIndex = 0;
-            this.RedPB.TabStop = false;
-            // 
-            // GreenPB
-            // 
-            this.GreenPB.Location = new System.Drawing.Point(421, 152);
-            this.GreenPB.Name = "GreenPB";
-            this.GreenPB.Size = new System.Drawing.Size(512, 100);
-            this.GreenPB.TabIndex = 1;
-            this.GreenPB.TabStop = false;
-            // 
-            // BluePB
-            // 
-            this.BluePB.Location = new System.Drawing.Point(421, 306);
-            this.BluePB.Name = "BluePB";
-            this.BluePB.Size = new System.Drawing.Size(512, 100);
-            this.BluePB.TabIndex = 2;
-            this.BluePB.TabStop = false;
-            // 
-            // HistoBtn
-            // 
-            this.HistoBtn.Location = new System.Drawing.Point(9, 413);
-            this.HistoBtn.Name = "HistoBtn";
-            this.HistoBtn.Size = new System.Drawing.Size(924, 57);
-            this.HistoBtn.TabIndex = 3;
-            this.HistoBtn.Text = "Открыть";
-            this.HistoBtn.UseVisualStyleBackColor = true;
-            this.HistoBtn.Click += new System.EventHandler(this.HistoBtn_Click);
-            // 
-            // pictureBox228
-            // 
-            this.pictureBox228.Location = new System.Drawing.Point(9, 7);
-            this.pictureBox228.Name = "pictureBox228";
-            this.pictureBox228.Size = new System.Drawing.Size(400, 400);
-            this.pictureBox228.TabIndex = 4;
-            this.pictureBox228.TabStop = false;
-
-            // pictureBox9
-            // 
-            this.pictureBox9.BackColor = System.Drawing.Color.White;
-            this.pictureBox9.Location = new System.Drawing.Point(8, 3);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(400, 400);
-            this.pictureBox9.TabIndex = 0;
-            this.pictureBox9.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Location = new System.Drawing.Point(507, 3);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(400, 400);
-            this.pictureBox10.TabIndex = 1;
-            this.pictureBox10.TabStop = false;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(414, 51);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(87, 45);
-            this.button8.TabIndex = 2;
-            this.button8.Text = "Grayscale";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(414, 102);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(87, 45);
-            this.button9.TabIndex = 3;
-            this.button9.Text = "Mirror";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(8, 409);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(899, 57);
-            this.button10.TabIndex = 4;
-            this.button10.Text = "Открыть";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(414, 153);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(87, 45);
-            this.button11.TabIndex = 5;
-            this.button11.Text = "Negative";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(414, 204);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(87, 45);
-            this.button12.TabIndex = 6;
-            this.button12.Text = "Contoured";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -604,11 +593,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabControl1.ResumeLayout(false);
-
-            this.tabPage3.ResumeLayout(false);
-
             this.tabPage4.ResumeLayout(false);
-
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox228)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BluePB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GreenPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RedPB)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -624,15 +616,6 @@
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-
-            ((System.ComponentModel.ISupportInitialize)(this.RedPB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GreenPB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BluePB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox228)).EndInit();
-
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-
             this.ResumeLayout(false);
 
         }
